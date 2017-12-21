@@ -5,7 +5,8 @@ var mongoose =  require('mongoose')
 var Good = mongoose.model('Good')
 var uuid = require('uuid')
 // var userHelper = require('../dbhelper/userHelper')
-import goodHelper from '../dbhelper/goodHelper'
+// import goodHelper from '../dbhelper/goodHelper'
+var goodHelper = require('../dbhelper/goodHelper')
 
 /**
  * 注册新用户
@@ -113,6 +114,7 @@ exports.goods = async (ctx, next) => {
     console.log(ctx.query.type,'get query')
     // console.log(ctx.params.type,'get params')
     var data = await goodHelper.findAllGood(ctx.query.type)
+    data.reverse()
     // var obj = await userHelper.findByPhoneNumber({phoneNumber : '13525584568'})
     // console.log('obj=====================================>'+obj)
     ctx.body = {
@@ -159,8 +161,18 @@ exports.deleteUser = async (ctx, next) => {
 // 删除商品
 exports.deleteGood = async (ctx, next) => {
     const userid = xss(ctx.request.body.userid.trim())
+    const _id = xss(ctx.request.body._id.trim())
     console.log(userid)
-    var data  = await goodHelper.deleteGood({userid})
+    var data  = await goodHelper.deleteGood({userid,_id})
+    ctx.body = {
+        success: true,
+        data
+    }
+}
+exports.getGood = async (ctx, next)=>{
+    const userid = xss(ctx.query.userid.trim())
+    console.log(userid)
+    var data  = await goodHelper.getGood(userid)
     ctx.body = {
         success: true,
         data

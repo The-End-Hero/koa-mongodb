@@ -11,28 +11,60 @@ var Schema = mongoose.Schema;
  * @type {mongoose}
  */
 var MealSchema = new Schema({
-    id:Number,
-    date:Number,
-    list:[
+    id: Number,
+    date: Number,
+    list: [
         {
-            id:Number,
-            name:String,
-            source:String,
-            img:String,
-            like:Number,
-            complain:Number,
-            want:Number,
-            unwant:Number,
+            id: Number,
+            name: String,
+            source: String,
+            img: String,
+            like: Number,
+            complain: Number,
+            want: Number,
+            unwant: Number,
         },
         {
-            id:Number,
-            name:String,
-            source:String,
-            img:String,
-            like:Number,
-            complain:Number,
-            want:Number,
-            unwant:Number,
+            id: Number,
+            name: String,
+            source: String,
+            img: String,
+            like: Number,
+            complain: Number,
+            want: Number,
+            unwant: Number,
+        }
+        ,
+        {
+            id: Number,
+            name: String,
+            source: String,
+            img: String,
+            like: Number,
+            complain: Number,
+            want: Number,
+            unwant: Number,
+        }
+        ,
+        {
+            id: Number,
+            name: String,
+            source: String,
+            img: String,
+            like: Number,
+            complain: Number,
+            want: Number,
+            unwant: Number,
+        },
+        {
+            id: Number,
+            name: String,
+            source: String,
+            img: String,
+            like: Number,
+            complain: Number,
+            want: Number,
+            unwant: Number,
         }
     ],
     meta: {
@@ -48,7 +80,7 @@ var MealSchema = new Schema({
 })
 
 // Defines a pre hook for the document.
-MealSchema.pre('save', function(next) {
+MealSchema.pre('save', function (next) {
     if (this.isNew) {
         this.meta.createAt = this.meta.updateAt = Date.now()
     }

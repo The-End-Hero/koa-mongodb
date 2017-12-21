@@ -6,9 +6,11 @@ var Complaint = mongoose.model('Complaint')
 var Meal = mongoose.model('Meal')
 var uuid = require('uuid')
 // var userHelper = require('../dbhelper/userHelper')
-import complaintHelper from '../dbhelper/complaintHelper'
-import mealHelper from '../dbhelper/mealHelper'
+// import complaintHelper from '../dbhelper/complaintHelper'
+// import mealHelper from '../dbhelper/mealHelper'
 
+var complaintHelper = require('../dbhelper/complaintHelper')
+var mealHelper = require('../dbhelper/mealHelper')
 /**
  * 注册新用户
  * @param {Function} next          [description]

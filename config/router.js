@@ -10,7 +10,7 @@ const Wx = require('../app/controllers/wx')
 
 module.exports = function () {
     var router = new Router({
-        prefix: '/api'
+        prefix: '/wx'
     })
 
     // user
@@ -34,6 +34,7 @@ module.exports = function () {
     router.post('/test/good/addgood', Good.addGood)// 添加商品
     router.post('/test/good/updatagood', Good.updataGood)// 更新商品
     router.post('/test/good/deletegood', Good.deleteGood)// 更新商品
+    router.get('/test/good/getgood', Good.getGood)// 根据userid查询商品
 
     // 投诉相关
     router.post('/test/complaint/addcomplaint',Complaint.addComplaint)// 添加投诉

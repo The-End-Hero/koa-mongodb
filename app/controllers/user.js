@@ -5,7 +5,9 @@ var mongoose =  require('mongoose')
 var User = mongoose.model('User')
 var uuid = require('uuid')
 // var userHelper = require('../dbhelper/userHelper')
-import userHelper from '../dbhelper/userHelper'
+// import userHelper from '../dbhelper/userHelper'
+
+var userHelper = require('../dbhelper/userHelper')
 
 /**
  * 注册新用户

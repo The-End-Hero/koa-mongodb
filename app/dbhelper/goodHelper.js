@@ -118,10 +118,10 @@ exports.addGood = async (good) => {
 //  * @param  {[type]} options.phoneNumber [description]
 //  * @return {[type]}                     [description]
 //  */
-exports.deleteGood = async ({userid}) => {
+exports.deleteGood = async ({userid,_id}) => {
     var flag = false
     console.log('flag==========>' + flag)
-    await Good.remove({userid}, function (err) {
+    await Good.remove({userid,_id}, function (err) {
         console.log(err)
         if (err) {
             flag = false
@@ -134,7 +134,24 @@ exports.deleteGood = async ({userid}) => {
     console.log('flag=====await=====>' + flag)
     return flag
 }
-
+exports.getGood = async (id)=>{
+    var query = Good.find({"userid":id}, function (error, docs) {
+        if (error) {
+            console.log("error :" + error);
+        } else {
+            console.log(docs, 'docs'); //docs: age为28的所有文档
+        }
+    });
+    var res = []
+    await query.exec(function (err, users) {
+        if (err) {
+            res = []
+        } else {
+            res = users;
+        }
+    })
+    return res
+}
 
 exports.updataGood = async (body) => {
     if (body) {

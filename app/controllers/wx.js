@@ -5,8 +5,8 @@ var mongoose = require('mongoose')
 var Wx = mongoose.model('Wx')
 var uuid = require('uuid')
 // var userHelper = require('../dbhelper/userHelper')
-import wxHelper from '../dbhelper/wxHelper'
-
+// import wxHelper from '../dbhelper/wxHelper'
+var wxHelper = require('../dbhelper/wxHelper')
 /**
  * 注册新用户
  * @param {Function} next          [description]
@@ -100,8 +100,8 @@ exports.getWx = async (ctx, next) => {
     if (data == false) {
         var wx = new Wx({
             userid: ctx.query.userid,
-            name: '司马懿' + Math.floor(Math.random() * 1000),
-            employeId: uuid.v4(),
+            name: ctx.query.name,
+            employeId: Math.floor(Math.random() * 100000000),
             sex: '男',
             company: '红星美凯龙',
             department: '前台应用部' + Math.floor(Math.random() * 10000),
@@ -124,7 +124,7 @@ exports.addWx = async (ctx, next) => {
     var wx = new Wx({
         userid: uuid.v4(),
         name: '司马懿' + Math.floor(Math.random() * 1000),
-        employeId: uuid.v4(),
+        employeId: Math.floor(Math.random() * 100000000),
         sex: '男',
         company: '红星美凯龙',
         department: '前台应用部' + Math.floor(Math.random() * 10000),
