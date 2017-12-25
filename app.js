@@ -10,7 +10,7 @@ const db = 'mongodb://localhost/test'
  * mongoose连接数据库
  * @type {[type]}
  */
-mongoose.Promise = require('bluebird')
+mongoose.Promise = require('bluebird')  // bluebird是promise补丁
 mongoose.connect(db)
 
 /**
